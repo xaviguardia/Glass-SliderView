@@ -39,7 +39,7 @@ Usage
     mProgress.startProgress(10 * 1000); // progress which lasts 10 seconds
 ```
 
-5. (optional) set an AnimateListener to get notified when the animation finishes
+(optional) set an AnimateListener to get notified when the animation finishes:
 
 ```java
 	mSliderProgress.setOnAnimateListener(new SliderView.OnAnimateListener() {
