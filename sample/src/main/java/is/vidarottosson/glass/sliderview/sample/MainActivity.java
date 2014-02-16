@@ -3,10 +3,13 @@ package is.vidarottosson.glass.sliderview.sample;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.glass.widget.SliderView;
 
 public class MainActivity extends Activity {
+
+    public static final String TAG = MainActivity.class.getSimpleName();
 
     private SliderView mSliderProgress;
     private SliderView mSliderIndetermediate;
@@ -20,7 +23,17 @@ public class MainActivity extends Activity {
         mSliderIndetermediate = (SliderView) findViewById(R.id.indeterm_slider);
 
         mSliderIndetermediate.startIndeterminate();
-        mSliderProgress.startProgress(10000);
+        mSliderProgress.startProgress(10000, new SliderView.OnAnimateListener() {
+            @Override
+            public void onFinishedListener() {
+                Log.i(TAG, "onFinishedListener");
+            }
+
+            @Override
+            public void onCancelledListener() {
+                Log.i(TAG, "onCanceledListener");
+            }
+        });
     }
 
 }
