@@ -23,17 +23,19 @@ public class MainActivity extends Activity {
         mSliderIndetermediate = (SliderView) findViewById(R.id.indeterm_slider);
 
         mSliderIndetermediate.startIndeterminate();
-        mSliderProgress.startProgress(10000, new SliderView.OnAnimateListener() {
+
+        mSliderProgress.setOnAnimateListener(new SliderView.OnAnimateListener() {
             @Override
-            public void onFinishedListener() {
+            public void onAnimateFinishedListener() {
                 Log.i(TAG, "onFinishedListener");
             }
 
             @Override
-            public void onCancelledListener() {
+            public void onAnimateCancelledListener() {
                 Log.i(TAG, "onCanceledListener");
             }
         });
+        mSliderProgress.startProgress(10000);
     }
 
 }

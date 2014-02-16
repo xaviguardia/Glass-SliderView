@@ -210,11 +210,6 @@ public class SliderView extends FrameLayout {
         startProgress(paramLong, new AccelerateDecelerateInterpolator());
     }
 
-	public void startProgress(long paramLong, OnAnimateListener onAnimateListener) {
-        mOnAnimateListener = onAnimateListener;
-		startProgress(paramLong, new AccelerateDecelerateInterpolator());
-	}
-
 	private void startProgress(long paramLong, TimeInterpolator paramTimeInterpolator) {
 		hideIndeterminateSlider(true);
 		showSlider(false);
@@ -232,12 +227,12 @@ public class SliderView extends FrameLayout {
 
                 @Override
                 public void onAnimationEnd(Animator animator) {
-                    mOnAnimateListener.onFinishedListener();
+                    mOnAnimateListener.onAnimateFinishedListener();
                 }
 
                 @Override
                 public void onAnimationCancel(Animator animator) {
-                    mOnAnimateListener.onCancelledListener();
+                    mOnAnimateListener.onAnimateCancelledListener();
                 }
 
                 @Override
@@ -257,8 +252,12 @@ public class SliderView extends FrameLayout {
 	}
 
     public interface OnAnimateListener {
-        public void onFinishedListener();
-        public void onCancelledListener();
+        public void onAnimateFinishedListener();
+        public void onAnimateCancelledListener();
     }
     private OnAnimateListener mOnAnimateListener;
+
+    public void setOnAnimateListener(OnAnimateListener onAnimateListener) {
+        mOnAnimateListener = onAnimateListener;
+    }
 }
