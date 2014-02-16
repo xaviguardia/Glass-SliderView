@@ -45,12 +45,12 @@ Usage
 	mSliderProgress.setOnAnimateListener(new SliderView.OnAnimateListener() {
             @Override
             public void onAnimateFinishedListener() {
-                Log.i(TAG, "onFinishedListener");
+            
             }
 
             @Override
             public void onAnimateCancelledListener() {
-                Log.i(TAG, "onCanceledListener");
+            
             }
         });
         mSliderProgress.startProgress(10000);
