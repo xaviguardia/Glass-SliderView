@@ -251,6 +251,15 @@ public class SliderView extends FrameLayout {
 		hideIndeterminateSlider(true);
 	}
 
+    public void stopProgress() {
+        this.slider.clearAnimation();
+        hideSlider(true);
+
+        if(mOnAnimateListener != null) {
+            mOnAnimateListener.onAnimateCancelledListener();
+        }
+    }
+
     public interface OnAnimateListener {
         public void onAnimateFinishedListener();
         public void onAnimateCancelledListener();
